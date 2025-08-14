@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .container {
+        padding: 30px;
+        text-align: center;
+    }
+
+    .no-events-message {
+        background-color: #fff8f8;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        font-size: 1.2rem;
+        color: #333;
+    }
+
+    .create-event-button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+    .create-event-button:hover {
+        background-color: #0056b3;
+    }
+
+    .card-header {
+        background-color: #226A80;
+        color: #fff;
+        padding: 15px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+    }
+
+    .card-header h3 {
+        margin: 0;
+    }
+</style>
+
+<div class="card-header text-white">
+    <h3 class="text-center">Poll Results</h3>
+</div>
+<div class="container">
+    <div class="no-events-message">
+        No events have been created yet, so the results are not available.
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Website Landing Page Design</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        
+      }
+
+      section{
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        /* background: url('static/media/hands\ vote\ card.jpg'); */
+        background-size: cover;
+        background-position: center;
+      }
+
+      header{
+        position: relative;
+        top: 0;
+        width: 100%;
+        padding: 30px 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      header .logo{
+        position: relative;
+        color: #000;
+        font-size: 1.2rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 1px;
+      }
+
+      header .navigation a{
+        color: #000;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        letter-spacing: 1px;
+        padding: 2px 15px;
+        border-radius: 20px;
+        transition: 0.3s;
+        transition-property: background;
+      }
+
+      .mid_heading{
+      color: #226A80;
+      text-align: center;
+      margin-top: 80px;
+
+      }
+      .mid_paragraph{
+        font-size: 23px;
+        padding-left: 80px;
+        padding-right: 80px;
+        padding-top: 10px;
+        padding-bottom: 20px;
+        
+      }
+
+        
+      
+
+      
+
+      header .navigation a:hover{
+        background: #fff;
+      }
+
+      .content{
+        max-width: 650px;
+        margin: 60px 100px;
+        margin-top: 100px;
+      }
+
+      .content .info h2{
+        color: #226A80;
+        font-size: 35px;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 1px;
+        line-height: 40px;
+        margin-bottom: 20px;
+      }
+
+      
+      /* .content .info h2{
+        color: #fff;
+        font-size: 54px;
+        font-weight: 600;
+      } */
+      
+      .text span{
+        color: #226A80 !important;
+        font-size:40px;
+      }
+      .content .info p{
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 40px;
+        color: rgb(83, 82, 82);
+      }
+
+      .content .info-btn{
+        color: #fff;
+        background: #226A80;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 500;
+        letter-spacing: 2px;
+        padding: 8px 18px;
+        border-radius: 100px;
+        transition: 0.3s;
+        transition-property: background;
+      }
+
+      .content .info-btn:hover{
+        background: #0C4F60;
+      }
+
+      
+
+      
+
+      label{
+        display: none;
+      }
+      .background-image {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      background-image: url('/static/POLL HAND.jpg'); /* Adjust the path as per your project structure */
+      background-size: cover;
+      background-position: center;
+      border-bottom-left-radius: 90px;
+      border-bottom-right-radius: 90px;
+}
+
+
+      
+
+      /* Responsive styles */
+
+      @media (max-width: 960px){
+        header .navigation{
+          display: none;
+        }
+
+        label{
+          display: block;
+          font-size: 25px;
+          cursor: pointer;
+          transition: 0.3s;
+          transition-property: color;
+        }
+
+        label:hover{
+          color: #fff;
+        }
+         header .logo{
+          position: absolute;
+          bottom: -6px;
+        }
+
+        .content .info h2{
+          font-size: 45px;
+          line-height: 50px;
+        }
+
+        .content .info h2 span{
+          font-size: 40px;
+          font-weight: 600;
+        }
+
+        .content .info p{
+          font-size: 14px;
+        }
+      }
+
+      @media (max-width: 560px){z
+        .content .info h2{
+          font-size: 35px;
+          line-height: 40px;
+        }
+
+        .content .info h2 span{
+          font-size: 30px;
+          font-weight: 600;
+        }
+
+        .content .info p{
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    
+
+    <section class="background-image">
+      
+      
+      <header>
+        <h2><a href="#" class="logo">EASY-POLL</a></h2>
+        
+        
+        <div class="navigation">
+          
+          <a href="{% url 'login' %}">Login</a>
+          <a href="{% url 'signup' %}">Sign-up</a>
+        </div>
+      </header>
+      <div class="content">
+        <div class="info">
+          <h2>POLLING PLATFORM:<br><span class="text">Share Your Thoughts! </span></h2>
+          <p>Welcome to our Polling Platform, where your opinion matters most! Take a moment to express your views on a range of topics. From everyday preferences to important decisions, your input helps shape the conversation.</p>
+          <a href="/next-page/" class="info-btn">Scroll Down</a>
+
+        </div>
+      </div>
+      <div>
+        <p></p>
+      </div>
+
+      
+      
+    </section>
+    <div class="mid_part">
+      <h1 class="mid_heading">EASY-POLL:</h1>
+      <p class="mid_paragraph">Welcome to Easy-Poll, where sharing your thoughts is as easy as a click! Say goodbye to complex forms and lengthy surveys – with Easy-Poll, you can express your preferences effortlessly.
+
+        Browse through our curated polls on a wide range of topics, from favorite foods to current events. With just a few quick taps, you can cast your vote and contribute to the collective wisdom of our community.
+        
+        No more hassle, no more confusion – just straightforward polling that puts your opinion front and center. Join Easy-Poll today and make your voice heard in the simplest way possible!</p>
+
+    </div>
+      
+    
+    <div class="container my-3">
+    <h1 class="my-5  text-center">Benefits of Online Polling<br> Every Opinion Matters!
+
+
+
+
+
+
+    </h2>
+    
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+           <img src="/static/album1.jpg">
+            <div class="card-body">
+              <p class="card-text my-3 "><b>1.Paperless Participation</b><br>In the world of polling, there's no need for paper ballots. Say goodbye to traditional methods and embrace the convenience, accessibility, and efficiency of our online platform.</p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="/static/album2.jpg">
+            <div class="card-body">
+              <p class="card-text my-3"><b>2.Accessibility and Convenience</b><br>Participating in polls via digital devices revolutionizes the process, making it accessible and convenient for everyone. With just a tap, your voice becomes part of the conversation</p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="/static/album 3.jpg">
+            <div class="card-body my-3">
+              <p class="card-text"><b>3.Secure</b><br>Participating in polls via secure digital devices ensures the integrity of the process. With robust security measures in place, we guarantee the accuracy and reliability of the results
+    
+    
+    
+    
+              </p>
+    
+            </div>
+          </div>
+        </div>
+    
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="/static/album4.jpg">       
+             <div class="card-body my-3">
+              <p class="card-text"><b>4. Reliable technical support</b><br>Polling platforms provide reliable technical support, ensuring seamless participation without any interruptions.
+                <p></p>
+                
+    
+    
+    
+    
+              </p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="/static/album5.jpg">
+              <div class="card-body my-3">
+              <p class="card-text"><b>5.No need for Paper Ballots</b><br>Digital polling eliminates the use of paper, streamlining the process with efficient support from reliable technical assistance.
+
+
+
+
+
+
+              </p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="/static/album6.jpg">        
+            <div class="card-body my-3">
+              <p class="card-text"><b>6.Digital Access</b><br>With digital polling, everyone is equipped to participate, thanks to its accessible and user-friendly nature.</p>
+              
+            </div>
+          </div>
+        </div>
+    
+        
+      </div>
+    </div>
+    <footer class="bg-dark text-light text-center py-5">
+      <div class="container">
+        <p>&copy; 2024 VotingSystem. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+  </body>
+</html>

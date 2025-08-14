@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'male_user.png' %}" type="image/x-icon">
+    <title>User Profile</title>
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+            color: #333; /* Dark text color */
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #226A80; /* Blue header background */
+            padding: 20px 0;
+            text-align: center;
+            color: #fff; /* White text color */
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: #fff; /* White color for logo */
+        }
+
+        .profile-container {
+            background-color: #dfe7e9; /* White background for profile */
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Box shadow for depth */
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Align items vertically */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);;
+            
+            
+            
+            
+        }
+
+        .profile-picture-container {
+            display: flex; /* Use flexbox for layout */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Align items horizontally */
+            padding-bottom: 150px;
+            padding-left: 30px;
+            padding-right: 40px;
+            
+        }
+
+        .profile-picture {
+            width: 150px; /* Set the width of the profile picture */
+            height: 150px; /* Set the height of the profile picture */
+            border-radius: 50%; /* Make it circular */
+            margin-bottom: 20px; /* Add space below the profile picture */
+            object-fit: cover; /* Ensure the image covers the entire container */
+            object-position: center; /* Center the image within the container */
+        }
+
+        .edit-profile-btn {
+            background-color: #007bff; /* Blue color for button */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            text-decoration: none;
+            margin-top: 20px; /* Add space above the button */
+        }
+
+        .user-info {
+            padding-left: 10px;
+            background-color: #9cb1d8;
+            border-radius: 50px;
+            width: 100%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);;
+
+
+
+             
+
+
+        }
+
+       
+
+
+        .label {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #000000; /* Blue color for labels */
+            margin-top: 10px;
+        }
+
+        .data {
+            font-size: 1rem;
+            margin-bottom: 20px; /* Add space between data */
+        }
+        
+            @media only screen and (max-width: 768px) {
+            .profile-container {
+                flex-direction: column; /* Stack items vertically on smaller screens */
+                align-items: center; /* Align items to the center */
+            }
+
+            .profile-picture-container {
+                padding: 0; /* Remove padding for profile picture container */
+            }
+
+            .profile-picture {
+                width: 120px; /* Decrease profile picture size */
+                height: 120px;
+                margin-bottom: 10px; /* Reduce space below the profile picture */
+            }
+
+            .user-info {
+                padding-left: 0; /* Remove left padding */
+                width: 100%; /* Set width to 100% */
+                margin-top: 20px; /* Add margin for separation */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="card-header text-white" style="background-color: #226A80; ">
+        <h3 class="text-center">User Profile</h3>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="profile-container">
+                    <div class="profile-picture-container">
+                        <!-- Profile picture -->
+                        <img src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}{% static 'male_user.png' %}{% endif %}" alt="Profile Picture" class="profile-picture">
+                         
+                        <!-- Edit button -->
+                        <a href="{% url 'profile_edit' %}" class="edit-profile-btn">Edit Profile</a>
+                    </div>
+                    
+                    <div class="user-info">
+                        <div class="label">Username:</div>
+                        <div class="data">{{ user.username }}</div>
+
+                        <div class="label">Email:</div>
+                        <div class="data">{{ user.email }}</div>
+
+                        <div class="label">Mobile Number:</div>
+                        <div class="data">{{ user.mobile_number }}</div>
+
+                        <div class="label">Address:</div>
+                        <div class="data">{{ user.address }}</div>
+
+                        <div class="label">Gender:</div>
+                        <div class="data">{{ user.gender }}</div>
+                        <div class="label">Role:</div>
+                        <div class="data">{{ user.role }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</body>
+</html>
+{% endblock %}

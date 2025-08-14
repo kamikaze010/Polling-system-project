@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* Custom styles for the poll report page */
+    .container {
+        padding: 30px;
+    }
+
+    .poll-container {
+        background-color: #fff8f8;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .poll-question {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .poll-chart {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .poll-header {
+        background-color: #58747d;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    
+    }
+.poll-question {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+    /* Responsive styling for smaller screens */
+    @media screen and (max-width: 768px) {
+        .poll-container {
+            padding: 15px;
+        }
+
+        .poll-question {
+            font-size: 20px;
+        }
+    }
+</style>
+
+<div class="card-header text-white" style="background-color: #226A80; ">
+    <h3 class="text-center">Poll Results</h3>
+</div>
+<div class="container">
+    
+    <!-- Iterate over the list of charts and display each chart -->
+    {% for poll_question, plot_data in plot_data_dict.items %}
+    <div class="poll-container">
+        <div class="poll-header">
+            <h2 class="poll-question">{{ forloop.counter }}. {{ poll_question }}</h2>
+        </div>
+        <!-- Display the chart -->
+        <img class="poll-chart" src="data:image/png;base64,{{ plot_data }}" alt="Poll Results">
+    </div>
+    
+    {% endfor %}
+</div>
+
+{% endblock %}

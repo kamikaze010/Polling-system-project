@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .image-container {
+            flex-basis: 90%;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+        }
+        .login-form-container {
+            flex-basis: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form {
+            width: 80%;
+            background-color: rgba(255, 255, 255, 0.13);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+            padding: 50px 35px;
+            max-width: 100%;
+        }
+        form * {
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+        form h3 {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 42px;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+    
+        input {
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.07);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+        ::placeholder {
+            color: #e5e5e5;
+        }
+        button {
+            margin-top: 50px;
+            width: 100%;
+            background-color: #ffffff;
+            color: #080710;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media(max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .image-container,
+            .login-form-container {
+                flex-basis: 100%;
+            }
+            .image-container img {
+                height: 50vh;
+                object-fit: cover;
+            }
+            form {
+                width: 90%;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="/static/people-voting-from-online-in-nepal.jpeg" alt="Login Image">
+        </div>
+        <div class="login-form-container">
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %} 
+                <h3>Login Here</h3>
+                <label for="username">Username</label>
+                <input type="text" placeholder="Enter Username" id="username" name="username">
+                <label for="password">Password</label>
+                <input type="password" placeholder="Password" id="password" name="pass">
+                {% if messages %}
+                <div style="color: red; text-align: center;">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+                </div>
+                {% endif %}
+                <button type="submit">Log In</button>
+                <a href="{% url 'signup' %}" >Create an account</a>
+                
+                <p><a href="{% url 'password_reset' %}">Forgot Password</a></p>
+            </form>
+            
+            
+        </div>
+    </div>
+</body>
+</html>
+ 5

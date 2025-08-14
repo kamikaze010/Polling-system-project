@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+
+<section class="container">
+    <div class="row justify-content-center ">
+        <div class="col-md-8">
+            <div class="card shadow">
+                
+                <div class="card-body">
+                    <form method="post" action="" class="bg-white p-3 ">
+                        {% csrf_token %}
+                        <div class="form-group text-center mb-5 custom-center"> <!-- Centered the question and label -->
+                            {{ poll_form.as_p }}
+                            {{ option_formset.management_form }}
+                        </div>
+                        <div class="row mt-4 justify-content-center"> <!-- Center the row -->
+                            <div class="col-md-5"> <!-- Change mx-auto to control width -->
+                                <h5 class="mb-3 text-center">Create Options</h5>
+                                {% for form in option_formset %}
+                                    {% if forloop.counter %}
+                                        <div class="form-group mb-4">
+                                            <label for="id_option_{{ forloop.counter }}">Option {{ forloop.counter }}: </label>
+                                            {{ form.option_text }}
+                                            {{ form.id }}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary">update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+    

@@ -1,0 +1,75 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block content %}
+<div class="card-header text-white" style="background-color: #226A80;">
+    <h3 class="text-center">Users</h3>
+</div>
+<section class="container">
+    <div class="row justify-content-around text-center">
+        
+        <div class="row justify-content-around mt-3">
+            <div class="col-sm-12">
+                <a href="{% url 'add_user' %}" class="btn btn-primary float-end">Add</a>
+            </div>
+        </div>
+
+        <div class="row justify-content-around text-center mt-1">
+            <div class="col-sm-12 border">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                          <th scope="col">S.N.</th>
+                          <th scope="col">UserName</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Role</th>
+                          <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for cdata in UserModeldata %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ cdata.username }}</td>
+                            <td>{{ cdata.email }}</td>
+                            <td>{{ cdata.role }}</td>
+                            <td class="d-flex justify-content-center">
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmDelete{{ cdata.id }}">Delete</button>
+                                <a href="{% url 'edit_usermodel' cdata.id %}" class="btn btn-info btn-lg-12">Edit</a>
+                            </td>
+                        </tr>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="confirmDelete{{ cdata.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete {{ cdata.username }}?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn
+                                                btn-danger btn-sm-12" data-bs-dismiss="modal">Cancel</button>
+                                        <form action="{% url 'delete_usermodel' %}" method="POST">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="id" value="{{ cdata.id }}">
+                                            <button type="submit" class="btn
+                                            btn-danger btn-lg-12">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Modal -->
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

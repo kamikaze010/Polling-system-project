@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+        }
+        .rounded-lg {
+            border-radius: 1rem;
+        }
+        
+        .custom-header h1 {
+            font-family: 'Roboto', sans-serif; 
+        }
+        .custom-header p {
+            line-height: 1.6; 
+        }
+        
+    
+        
+    </style>
+</head>
+<body>
+    {% block content %}
+<div class="container-fluid px-3">
+    <h1 class="my-4 display-5">Dashboard</h1>
+    <h2 class="text-center my-2">{{ total_vote_count }}</h2>
+    <div class="row g-4 my-4">
+        <div class="col-md-4">
+            <div class="p-4 bg-white shadow-lg d-flex justify-content-between align-items-center rounded-lg">
+                <div>
+                    <h3 class="fs-2 text-primary">{{ Number_Of_User }}</h3>
+                    <p class="fs-5 text-secondary">Users</p>
+                </div>
+                <div class="icon-container bg-light p-3 rounded-circle">
+                    <i class="fas fa-users fs-1 text-primary"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="p-4 bg-white shadow-lg d-flex justify-content-between align-items-center rounded-lg">
+                <div>
+                    <h3 class="fs-2 text-success">{{ Number_Of_Votes }}</h3>
+                    <p class="fs-5 text-secondary">Total Votes</p>
+                </div>
+                <div class="icon-container bg-light p-3 rounded-circle">
+                    <i class="fas fa-vote-yea fs-1 text-success"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="p-4 bg-white shadow-lg d-flex justify-content-between align-items-center rounded-lg">
+                <div>
+                    <h3 class="fs-2 text-danger">{{ Number_Of_Active_Events }}</h3>
+                    <p class="fs-5 text-secondary">Active Events</p>
+                </div>
+                <div class="icon-container bg-light p-3 rounded-circle">
+                    <i class="far fa-calendar-alt fs-1 text-danger"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header class="py-5 custom-header">
+    <div class="container-fluid px-lg-5">
+        <div class="p-4 p-lg-5 bg-light text-center shadow-lg">
+            <div class="m-4 m-lg-5">
+                <h1 class="display-2 fw-bold text-primary mb-4">Vote Your Favorite Poll</h1>
+                <p class="fs-5 text-muted mb-4">It's time to celebrate the tools that power our digital dreams. Cast your vote for your favorite programming languages, frameworks, and databases that have been your trusted companions in crafting incredible software. Your voice matters in recognizing the building blocks of innovation.</p>
+                <a class="btn btn-primary btn-lg rounded-pill px-4 py-2" href="{% url 'events' %}">Let's Vote</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+{% endblock %}
